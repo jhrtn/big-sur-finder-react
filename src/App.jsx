@@ -3,8 +3,8 @@ import Draggable from 'react-draggable';
 
 import img from './images/bigsur-bg.jpg';
 import airdrop from './images/icons/airdrop.svg';
-import left from './images/icons/left.svg';
-import right from './images/icons/right.svg';
+// import left from './images/icons/left.svg';
+// import right from './images/icons/right.svg';
 import share from './images/icons/share.svg';
 import more from './images/icons/more.svg';
 import box from './images/icons/box.svg';
@@ -17,18 +17,18 @@ import cloud from './images/icons/cloud.svg';
 import drive from './images/icons/drive.svg';
 import apps from './images/icons/apps.svg';
 
-import { Airdrop } from './icons';
+// import { Airdrop } from './icons';
 
 import { ReactComponent as AirdropIcon } from './images/icons/airdrop.svg';
 import { ReactComponent as LeftIcon } from './images/icons/left.svg';
 import { ReactComponent as RightIcon } from './images/icons/right.svg';
 
-const StyledIcon = styled(AirdropIcon)`
-  path {
-    fill: ${(props) => (props.selected ? 'black' : 'gray')};
-    fill: ${(props) => (props.selected ? 'black' : 'gray')};
-  }
-`;
+// const StyledIcon = styled(AirdropIcon)`
+//   path {
+//     fill: ${(props) => (props.selected ? 'black' : 'gray')};
+//     fill: ${(props) => (props.selected ? 'black' : 'gray')};
+//   }
+// `;
 
 const StyledLeft = styled(LeftIcon)`
   border-radius: 4px;
