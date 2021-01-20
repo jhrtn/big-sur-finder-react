@@ -19,7 +19,7 @@ import apps from './images/icons/apps.svg';
 
 // import { Airdrop } from './icons';
 
-import { ReactComponent as AirdropIcon } from './images/icons/airdrop.svg';
+// import { ReactComponent as AirdropIcon } from './images/icons/airdrop.svg';
 import { ReactComponent as LeftIcon } from './images/icons/left.svg';
 import { ReactComponent as RightIcon } from './images/icons/right.svg';
 
