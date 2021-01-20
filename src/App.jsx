@@ -22,20 +22,24 @@ const StyledIcon = styled(AirdropIcon)`
 `;
 
 const StyledLeft = styled(LeftIcon)`
+  border-radius: 4px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.05s ease;
+  }
   path {
     stroke: ${(props) => (props.selected ? 'black' : 'gray')};
-    &:hover {
-      stroke: black;
-    }
   }
 `;
 
 const StyledRight = styled(RightIcon)`
+  border-radius: 4px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.05s ease;
+  }
   path {
     stroke: ${(props) => (props.selected ? 'black' : 'gray')};
-    &:hover {
-      stroke: black;
-    }
   }
 `;
 
@@ -84,7 +88,7 @@ const Sidebar = styled.div`
 `;
 
 const Inner = styled.div`
-  padding: 28px;
+  padding: 24px;
 `;
 
 const Controls = styled.div`
@@ -98,6 +102,9 @@ const Circle = styled.div`
   margin-right: 8px;
   background: ${(props) => (props.colred ? '#ee645b' : props.colorange ? '#f6c243' : '#5ccd41')};
   border: 0.5px rgba(0, 0, 0, 0.1) solid;
+  &:hover {
+    border: 0.5px rgba(0, 0, 0, 0.3) solid;
+  }
 `;
 
 const FavoriteItem = styled.div`
@@ -105,12 +112,21 @@ const FavoriteItem = styled.div`
   font-size: 13px;
   font-weight: 400;
   display: flex;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
+  width: 110px;
+  background-color: none;
+  padding: 4px 4px 4px 6px;
+  border-radius: 4px;
+  user-select: none;
   img {
     height: 16px;
     width: 16px;
     /* background-color: #276be9; */
     margin-right: 10px;
+  }
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.05s ease;
   }
 `;
 
