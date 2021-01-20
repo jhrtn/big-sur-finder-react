@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import Draggable from 'react-draggable';
+
 import img from './images/bigsur-bg.jpg';
 import airdrop from './images/icons/airdrop.svg';
 import left from './images/icons/left.svg';
@@ -7,6 +9,13 @@ import share from './images/icons/share.svg';
 import more from './images/icons/more.svg';
 import box from './images/icons/box.svg';
 import search from './images/icons/search.svg';
+import clock from './images/icons/clock.svg';
+import download from './images/icons/download.svg';
+import desktop from './images/icons/desktop.svg';
+import documents from './images/icons/documents.svg';
+import cloud from './images/icons/cloud.svg';
+import drive from './images/icons/drive.svg';
+import apps from './images/icons/apps.svg';
 
 import { Airdrop } from './icons';
 
@@ -65,6 +74,7 @@ const Finder = styled.div`
   height: 425px;
   /* background: white; */
   display: flex;
+  border-radius: 12px;
 `;
 
 const Sidebar = styled.div`
@@ -72,14 +82,14 @@ const Sidebar = styled.div`
   width: 165px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.58);
   color: #333;
   border-radius: 12px 0 0 12px;
 
   p {
     line-height: 11px;
     font-size: 11px;
-    color: #696969;
+    color: #3f3f3f;
     text-align: left;
     margin-top: 30px;
     padding: 0px;
@@ -88,7 +98,7 @@ const Sidebar = styled.div`
 `;
 
 const Inner = styled.div`
-  padding: 24px;
+  padding: 20px;
 `;
 
 const Controls = styled.div`
@@ -100,8 +110,8 @@ const Circle = styled.div`
   height: 12px;
   border-radius: 50%;
   margin-right: 8px;
-  background: ${(props) => (props.colred ? '#ee645b' : props.colorange ? '#f6c243' : '#5ccd41')};
   border: 0.5px rgba(0, 0, 0, 0.1) solid;
+  background: ${(props) => (props.colred ? '#ee645b' : props.colorange ? '#f6c243' : '#5ccd41')};
   &:hover {
     border: 0.5px rgba(0, 0, 0, 0.3) solid;
   }
@@ -113,8 +123,8 @@ const FavoriteItem = styled.div`
   font-weight: 400;
   display: flex;
   margin-bottom: 4px;
-  width: 110px;
-  background-color: none;
+  width: 120px;
+  background-color: ${(props) => (props.selected ? 'rgba(0, 0, 0, 0.1)' : 'none')};
   padding: 4px 4px 4px 6px;
   border-radius: 4px;
   user-select: none;
@@ -125,8 +135,8 @@ const FavoriteItem = styled.div`
     margin-right: 10px;
   }
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    transition: background-color 0.05s ease;
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: background-color 0.075s ease;
   }
 `;
 
@@ -137,9 +147,9 @@ const Main = styled.div`
   border-radius: 0 12px 12px 0;
 `;
 
-const ListItem = ({ name, icon }) => {
+const ListItem = ({ name, icon, selected }) => {
   return (
-    <FavoriteItem>
+    <FavoriteItem selected={selected}>
       {/* <div /> */}
       <img src={icon} alt="" />
       {name}
@@ -185,45 +195,47 @@ const Right = styled.div`
 function App() {
   return (
     <Container className="App">
-      <Finder>
-        <Sidebar>
-          <Inner>
-            <Controls>
-              <Circle colred></Circle>
-              <Circle colorange></Circle>
-              <Circle colgreen></Circle>
-            </Controls>
-            <p>Favourites</p>
-            <ListItem icon={airdrop} name="AirDrop" />
-            <ListItem icon={airdrop} name="Recents" />
-            <ListItem icon={airdrop} name="Desktop" />
-            <ListItem icon={airdrop} name="Applications" />
-            <ListItem icon={airdrop} name="Documents" />
-            <ListItem icon={airdrop} name="Downloads" />
-            <p>iCloud</p>
-            <ListItem icon={airdrop} name="iCloud Drive" />
-            <p>Locations</p>
-            <ListItem icon={airdrop} name="Macintosh" />
-          </Inner>
-        </Sidebar>
-        <Main>
-          <TopBar>
-            <Left>
-              {/* <img src={left} alt="" /> */}
-              {/* <img src={right} alt="" /> */}
-              <StyledLeft />
-              <StyledRight />
-              <h3>Desktop</h3>
-            </Left>
-            <Right>
-              <img src={box} alt="" />
-              <img src={share} alt="" />
-              <img src={more} alt="" />
-              <img src={search} alt="" />
-            </Right>
-          </TopBar>
-        </Main>
-      </Finder>
+      <Draggable>
+        <Finder>
+          <Sidebar>
+            <Inner>
+              <Controls>
+                <Circle colred></Circle>
+                <Circle colorange></Circle>
+                <Circle colgreen></Circle>
+              </Controls>
+              <p>Favourites</p>
+              <ListItem icon={airdrop} name="AirDrop" />
+              <ListItem icon={clock} name="Recents" />
+              <ListItem selected={true} icon={desktop} name="Desktop" />
+              <ListItem icon={apps} name="Applications" />
+              <ListItem icon={documents} name="Documents" />
+              <ListItem icon={download} name="Downloads" />
+              <p>iCloud</p>
+              <ListItem icon={cloud} name="iCloud Drive" />
+              <p>Locations</p>
+              <ListItem icon={drive} name="Macintosh" />
+            </Inner>
+          </Sidebar>
+          <Main>
+            <TopBar>
+              <Left>
+                {/* <img src={left} alt="" /> */}
+                {/* <img src={right} alt="" /> */}
+                <StyledLeft />
+                <StyledRight />
+                <h3>Desktop</h3>
+              </Left>
+              <Right>
+                <img src={box} alt="" />
+                <img src={share} alt="" />
+                <img src={more} alt="" />
+                <img src={search} alt="" />
+              </Right>
+            </TopBar>
+          </Main>
+        </Finder>
+      </Draggable>
     </Container>
   );
 }
